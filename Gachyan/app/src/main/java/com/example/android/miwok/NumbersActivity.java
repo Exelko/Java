@@ -1,23 +1,19 @@
 package com.example.android.miwok;
 
-import android.content.Context;
-import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
-
-import static android.media.AudioManager.AUDIOFOCUS_LOSS_TRANSIENT;
 
 public class NumbersActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.Adapter<MyAdapter.ViewHolder> mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    MediaPlayer mp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,187 +21,96 @@ public class NumbersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_numbers);
 
         String[] phrases = {"Do you like watching me",
-
                 "On the house",
-
                 "Playing with fire",
-
                 "RIP ears",
-
                 "She gave me quite a show",
-
                 "The semen arsonist",
-
                 "Why don't you get fucked",
-
                 "You get mad",
-
                 "AAAAAAAH",
-
                 "Another victim",
-
                 "Ass we can",
-
                 "At least it smells like it",
-
                 "ATTEEEN-TION",
-
                 "Bet your ass",
-
                 "Big surprise",
-
                 "Come on college boy",
-
                 "I'm taking that ass",
-
                 "Ladies first",
-
                 "Lash of the spanking",
-
                 "Like embarrassing me",
-
                 "Oh my shoulder",
-
                 "One more round",
-
                 "Pull up our pants",
-
                 "Six hot loads",
-
                 "Spank",
-
                 "That's power son",
-
                 "The other night",
-
                 "The point you wanna be",
-
                 "What the hell are you two doing",
-
                 "Work that tool",
-
                 "You can go now",
-
                 "You got me mad now",
-
                 "You like challenges",
-
                 "You like that",
-
                 "You ripped my fucking pants",
-
                 "An ass I wouldn't mind fucking",
-
                 "I love fire",
-
                 "It turns me on",
-
                 "It's a loan",
-
                 "Oh ho ho ganging up",
-
                 "So how you feeling",
-
                 "Two can play it",
-
                 "Beat me 1 2 3",
-
                 "Boss of this gym",
-
                 "Come on",
-
                 "Fuck you leather man",
-
                 "Go another round",
-
                 "Jabroni outfit",
-
                 "Knocked out some jabroni",
-
                 "Let's give it a go",
-
                 "Settle it",
-
                 "Wrong door",
-
                 "It gets bigger when I pull",
-
                 "Our daddy told us",
-
                 "Rip the skin",
-
                 "Sorry for what",
-
                 "Oh Oh Aaah Ah",
-
                 "Thank you sir",
-
                 "Yes sir",
-
                 "It's macabre!",
-
                 "Mmmmh",
-
                 "Right happy to",
-
                 "Sorry",
-
                 "Without further interruption",
-
                 "Boy next door",
-
                 "Deep dark fantasies",
-
                 "Do you like what you see",
-
                 "Dungeon master",
-
                 "Fisting is 300",
-
                 "Fuck you",
-
                 "Fucking cumming",
-
                 "FUCKYOU",
-
                 "Full master",
-
                 "I don't do anal",
-
                 "It's bondage, gay website",
-
                 "It's so fucking deep",
-
                 "Lube it up",
-
                 "Penetration 1",
-
                 "Penetration 2",
-
                 "Penetration 3",
-
                 "Penetration 4",
-
                 "Performance artist",
-
                 "Shut the fuck up boy",
-
                 "Slaves get your ass back here",
-
                 "Spit - YEAAAH",
-
                 "Stick your finger",
-
                 "Suction",
-
                 "Swallow my cum",
-
                 "Take it boy",
-
                 "That turns me on",
-
                 "That's amazing",
-
                 "WOO"};
 
         int[] soundSrcArr = {R.raw.do_you_like_watching_me, R.raw.on_the_house, R.raw.playing_with_fire, R.raw.rip_ears,
@@ -242,7 +147,7 @@ public class NumbersActivity extends AppCompatActivity {
             else words.add(new Word(phrases[i], soundSrcArr[i], R.drawable.vand));
         }
 
-        WordAdapter itemsAdapter = new WordAdapter(this, words, R.color.category_numbers);
+
 
         mRecyclerView = (RecyclerView) findViewById(R.id.list);
 
@@ -250,10 +155,13 @@ public class NumbersActivity extends AppCompatActivity {
 
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-
         mAdapter = new MyAdapter(this, words);
         mRecyclerView.setAdapter(mAdapter);
-
-
+        mAdapter.setOnPlayClickListener(new MyAdapter.OnPlayClickListener() {
+            @Override
+            void onPlayClicked(int resId) {
+                mp = MediaPlayer.create(NumbersActivity.this, resId);
+            }
+        });
     }
 }
