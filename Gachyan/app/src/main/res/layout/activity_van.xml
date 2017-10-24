@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.android.miwok.VanActivity">
+
+    <ImageView
+        android:id="@+id/van_portrait"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/van2"
+        android:cropToPadding="true"
+        android:scaleType="centerCrop"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp" />
+    <TextView
+        android:id="@+id/van_biography"
+        android:layout_width="285dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="@string/van_biography"
+        android:padding="10dp"
+        android:layout_toRightOf="@id/van_portrait"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <ImageView
+        android:id="@+id/van3"
+        android:layout_width="108dp"
+        android:layout_height="124dp"
+        android:layout_gravity="center"
+        android:src="@drawable/van3"
+        android:layout_below="@id/van_biography"
+        android:layout_toRightOf="@id/van_portrait"/>
+
+    <ImageView
+        android:id="@+id/van2"
+        android:layout_width="108dp"
+        android:layout_height="124dp"
+        android:layout_gravity="center"
+        android:src="@drawable/van3"
+        android:layout_below="@id/van_biography"
+        android:layout_alignParentRight="true" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/van_portrait"
+        android:layout_below="@id/van3"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="8dp">
+        <ImageView
+            android:id="@+id/van1"
+            android:layout_width="108dp"
+            android:layout_height="124dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/van3"
+            android:layout_below="@+id/van3"
+            android:layout_toRightOf="@id/van3" />
+    </RelativeLayout>
+
+</RelativeLayout>

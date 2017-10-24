@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.android.miwok.AnikiActivity">
+
+    <ImageView
+        android:id="@+id/billy_portrait"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/billy"
+        android:cropToPadding="true"
+        android:scaleType="centerCrop"/>
+    <TextView
+        android:id="@+id/billy_biography"
+        android:layout_width="285dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="@string/billy_biography"
+        android:padding="10dp"
+        android:layout_toRightOf="@id/billy_portrait"/>
+    <ImageView
+        android:id="@+id/billy3"
+        android:layout_width="108dp"
+        android:layout_height="124dp"
+        android:layout_gravity="center"
+        android:src="@drawable/billypng"
+        tools:layout_editor_absoluteY="276dp"
+        tools:layout_editor_absoluteX="182dp"
+        android:layout_below="@id/billy_biography"
+        android:layout_toRightOf="@id/billy_portrait"/>
+
+    <ImageView
+        android:id="@+id/billy2"
+        android:layout_width="108dp"
+        android:layout_height="124dp"
+        android:layout_gravity="center"
+        android:src="@drawable/billypng"
+        android:layout_below="@id/billy_biography"
+        android:layout_alignParentRight="true"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/billy_portrait"
+        android:layout_below="@id/billy3">
+        <ImageView
+        android:id="@+id/billy1"
+        android:layout_width="108dp"
+        android:layout_height="124dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/billypng"
+        android:layout_below="@+id/billy3"
+        android:layout_toRightOf="@id/billy3" />
+    </RelativeLayout>
+
+
+</RelativeLayout>
