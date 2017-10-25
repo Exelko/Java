@@ -13,7 +13,22 @@ public class NumbersActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private MyAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    MediaPlayer mp;
+    private MediaPlayer mp;
+
+    private MediaPlayer.OnCompletionListener onCompletionListener = new MediaPlayer.OnCompletionListener() {
+        @Override
+        public void onCompletion(MediaPlayer mp) {
+            releaseMediaPlayer();
+        }
+    };
+
+    private void releaseMediaPlayer() {
+        if (mp != null) {
+            mp.release();
+        }
+        mp = null;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -147,7 +162,8 @@ public class NumbersActivity extends AppCompatActivity {
             else words.add(new Word(phrases[i], soundSrcArr[i], R.drawable.vand));
         }
 
-
+        mp = new MediaPlayer();
+        mp.setOnCompletionListener(onCompletionListener);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.list);
 
@@ -160,8 +176,16 @@ public class NumbersActivity extends AppCompatActivity {
         mAdapter.setOnPlayClickListener(new MyAdapter.OnPlayClickListener() {
             @Override
             public void onPlayClicked(int resId) {
-                mp = MediaPlayer.create(NumbersActivity.this, resId);
-                mp.start();
+                if(mp.isPlaying()){
+                    mp.stop();
+                    mp.release();
+                    mp = MediaPlayer.create(NumbersActivity.this, resId);
+                    mp.start();
+                    }
+                else {
+                    mp = MediaPlayer.create(NumbersActivity.this, resId);
+                    mp.start();
+                    }
             }
         });
     }
