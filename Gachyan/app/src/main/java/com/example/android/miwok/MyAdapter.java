@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private ArrayList<Word> mDataset;
     private Context mContext;
-    private OnPlayClickListener onPlayClickListener;
+    public OnPlayClickListener onPlayClickListener;
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -40,7 +40,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         mContext = context;
     }
 
-    private Context getmContext() {
+    public Context getmContext() {
         return mContext;
     }
 

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class NumbersActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter<MyAdapter.ViewHolder> mAdapter;
+    private MyAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     MediaPlayer mp;
 
@@ -159,8 +159,9 @@ public class NumbersActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.setOnPlayClickListener(new MyAdapter.OnPlayClickListener() {
             @Override
-            void onPlayClicked(int resId) {
+            public void onPlayClicked(int resId) {
                 mp = MediaPlayer.create(NumbersActivity.this, resId);
+                mp.start();
             }
         });
     }
